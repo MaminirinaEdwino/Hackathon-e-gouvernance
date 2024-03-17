@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CertificationLegalisation index{% endblock %}
+
+{% block body %}
+    <h1>CertificationLegalisation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Non_legalise</th>
+                <th>Legalise</th>
+                <th>DateDemande</th>
+                <th>DateRetour</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for certification_legalisation in certification_legalisations %}
+            <tr>
+                <td>{{ certification_legalisation.id }}</td>
+                <td>{{ certification_legalisation.nonLegalise }}</td>
+                <td>{{ certification_legalisation.legalise }}</td>
+                <td>{{ certification_legalisation.dateDemande ? certification_legalisation.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ certification_legalisation.dateRetour ? certification_legalisation.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_certification_legalisation_show', {'id': certification_legalisation.id}) }}">show</a>
+                    <a href="{{ path('app_certification_legalisation_edit', {'id': certification_legalisation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_certification_legalisation_new') }}">Create new</a>
+{% endblock %}

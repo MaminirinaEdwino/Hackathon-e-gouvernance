@@ -1,0 +1,11 @@
+{% extends 'acceuil_admin.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('app_utilisateurs_index') }}">liste user<a/>
+    <a href="{{ path('app_quartier_index') }}">liste quertier<a/>
+    <a href="{{ path('app_employes_index') }}">liste employes<a/>
+    <a href="{{ path('app_porte_index') }}">liste porte<a/>
+    <a href="{{ path('app_profession_index') }}">liste profession<a/>
+    <a href="{{ path('app_service_index') }}">liste service<a/>
+    <a href="{{ path('app_logout') }}">logout<a/>
+{% endblock %}

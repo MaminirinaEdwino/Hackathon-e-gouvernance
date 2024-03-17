@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deces index{% endblock %}
+
+{% block body %}
+    <h1>Deces index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date_dece</th>
+                <th>Cin</th>
+                <th>Fichier_retour</th>
+                <th>DateDemande</th>
+                <th>DateRetour</th>
+                <th>Confirmation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dece in deces %}
+            <tr>
+                <td>{{ dece.id }}</td>
+                <td>{{ dece.nom }}</td>
+                <td>{{ dece.prenom }}</td>
+                <td>{{ dece.dateDece ? dece.dateDece|date('Y-m-d') : '' }}</td>
+                <td>{{ dece.cin }}</td>
+                <td>{{ dece.fichierRetour }}</td>
+                <td>{{ dece.dateDemande ? dece.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ dece.dateRetour ? dece.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ dece.confirmation ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_deces_show', {'id': dece.id}) }}">show</a>
+                    <a href="{{ path('app_deces_edit', {'id': dece.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_deces_new') }}">Create new</a>
+{% endblock %}

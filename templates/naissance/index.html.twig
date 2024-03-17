@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Naissance index{% endblock %}
+
+{% block body %}
+    <h1>Naissance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Date_naissance</th>
+                <th>Lieu_naissance</th>
+                <th>Fichier_retour</th>
+                <th>DateDemande</th>
+                <th>DateRetour</th>
+                <th>Confirmer</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for naissance in naissances %}
+            <tr>
+                <td>{{ naissance.id }}</td>
+                <td>{{ naissance.nom }}</td>
+                <td>{{ naissance.prenom }}</td>
+                <td>{{ naissance.sexe ? 'Yes' : 'No' }}</td>
+                <td>{{ naissance.dateNaissance ? naissance.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ naissance.lieuNaissance }}</td>
+                <td>{{ naissance.fichierRetour }}</td>
+                <td>{{ naissance.dateDemande ? naissance.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ naissance.dateRetour ? naissance.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ naissance.confirmer ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_naissance_show', {'id': naissance.id}) }}">show</a>
+                    <a href="{{ path('app_naissance_edit', {'id': naissance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_naissance_new') }}">Create new</a>
+{% endblock %}

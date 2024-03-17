@@ -1,0 +1,120 @@
+{% extends 'page_user.html.twig' %}
+
+{% block title %}Page Utilisateur{% endblock %}
+
+{% block body %}
+
+
+{% if declaration_naissances is defined %}
+    {% for declaration_naissance in declaration_naissances %}
+        {{ declaration_naissance.nom }}
+        {{ declaration_naissance.prenom }}
+        {{ declaration_naissance.datenaissance|date('d-m-Y') }}
+        {{ declaration_naissance.pere }}
+        {{ declaration_naissance.mere }}
+        {% if declaration_naissance.confirmer == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_declaration_naissance_pdf', {id: declaration_naissance.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        <br>
+    {% endfor %}
+    <br>
+{% endif %}
+{% if acte_de_naissances is defined %}
+    {% for acte_de_naissance in acte_de_naissances %}
+        {{ acte_de_naissance.nom }}
+        {{ acte_de_naissance.prenom }}
+        {{ acte_de_naissance.datenaissance|date('d-m-Y') }}
+        {{ acte_de_naissance.pere }}
+        {{ acte_de_naissance.mere }}
+        {% if acte_de_naissance.confirmer == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_declaration_naissance_pdf', {id: acte_de_naissance.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        <br>
+    {% endfor %}
+{% endif %}
+{% if declaration_deces is defined %}
+    {% for declaration_dece in declaration_deces %}
+        {{ declaration_dece.nom }}
+        {{ declaration_dece.prenom }}
+        {{ declaration_dece.datedece|date('d-m-Y') }}
+        {{ declaration_dece.utilisateur.pere }}
+        {{ declaration_dece.utilisateur.mere }}
+        {% if declaration_dece.confirmation == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_dece_pdf', {id: declaration_dece.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        <br>
+    {% endfor %}
+{% endif %}
+{% if acte_de_deces is defined %}
+    {% for acte_de_dece in acte_de_deces %}
+        {{ acte_de_dece.nom }}
+        {{ acte_de_dece.prenom }}
+        {{ acte_de_dece.datedece|date('d-m-Y') }}
+        {{ acte_de_dece.utilisateur.pere }}
+        {{ acte_de_dece.utilisateur.mere }}
+        {% if acte_de_dece.confirmation == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_dece_pdf', {id: acte_de_dece.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        <br>
+    {% endfor %}
+{% endif %}
+{% if certifications is defined %}
+    {% for certification in certifications %}
+        Demande de legalisation 
+        {% if certification.confirmation == true %}
+            <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ asset('/uploads/pdf_site/') ~ certification.legalise }}"
+            role="button"
+            >Telecharger le document légalisé</a
+        >
+        {% endif %}
+        <br>
+    {% endfor %}
+{% endif %}
+{% if mariages %}
+    {% for mariage in mariages %}
+        Acte de mariage de {{ mariage.demandeur.nom }}{{ mariage.demandeur.prenom }}
+        <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ path('app_mariage_pdf', {id: mariage.id}) }}"
+            role="button"
+            >Telecharger le document</a
+        >
+        
+    {% endfor %}
+{% endif %}
+<a href="{{ path('app_logout') }}">logout<a/>
+{% endblock %}

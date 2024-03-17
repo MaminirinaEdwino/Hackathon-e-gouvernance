@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Livret{% endblock %}
+
+{% block body %}
+    <h1>Edit Livret</h1>
+
+    {{ include('livret/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_livret_index') }}">back to list</a>
+
+    {{ include('livret/_delete_form.html.twig') }}
+{% endblock %}

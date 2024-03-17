@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livret index{% endblock %}
+
+{% block body %}
+    <h1>Livret index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cin</th>
+                <th>Fichier_retour</th>
+                <th>DateDemande</th>
+                <th>DateRetour</th>
+                <th>Confirmation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livret in livrets %}
+            <tr>
+                <td>{{ livret.id }}</td>
+                <td>{{ livret.cin }}</td>
+                <td>{{ livret.fichierRetour }}</td>
+                <td>{{ livret.dateDemande ? livret.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ livret.dateRetour ? livret.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ livret.confirmation ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_livret_show', {'id': livret.id}) }}">show</a>
+                    <a href="{{ path('app_livret_edit', {'id': livret.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_livret_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livret{% endblock %}
+
+{% block body %}
+    <h1>Livret</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ livret.id }}</td>
+            </tr>
+            <tr>
+                <th>Cin</th>
+                <td>{{ livret.cin }}</td>
+            </tr>
+            <tr>
+                <th>Fichier_retour</th>
+                <td>{{ livret.fichierRetour }}</td>
+            </tr>
+            <tr>
+                <th>DateDemande</th>
+                <td>{{ livret.dateDemande ? livret.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateRetour</th>
+                <td>{{ livret.dateRetour ? livret.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Confirmation</th>
+                <td>{{ livret.confirmation ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_livret_index') }}">back to list</a>
+
+    <a href="{{ path('app_livret_edit', {'id': livret.id}) }}">edit</a>
+
+    {{ include('livret/_delete_form.html.twig') }}
+{% endblock %}

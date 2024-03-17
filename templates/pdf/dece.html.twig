@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>acte de naissance</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <h1>Acte de décès</h1>
+    <p>Fait le {{ dece.datedece }} à lieu</p>
+    <p></p>
+    <p></p>
+    <p class="fs-5 text-start">Nom: {{ dece.nom }}</p>
+    <p class="fs-5">Prénom: {{ dece.prenom }}<br></p>
+    <p class="fs-5">Lieu de naissance: {{ dece.lieunaissance }}<br></p>
+    <p class="fs-5">date de naissance: {{ dece.datenaissance|date('d-m-Y') }}&nbsp;<br></p>
+    <p class="fs-5">Père: {{ dece.utilisateur.pere }}<br></p>
+    <p class="fs-6">Mère: {{ dece.utilisateur.mere }}<br></p>
+    <p class="fs-2 text-center"></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-1"></div>
+            <div class="col-md-4 col-lg-8 col-xl-8">
+                <p class="fs-2 text-center"><br>{{ dece.utilisateur.nom }}, 
+                {{ dece.utilisateur.prenom }} né le {{ dece.datenaissance|date('d-m-Y') }} à 
+                {{ dece.lieunaissance }}, fils/fille de {{ dece.utilisateur.pere }} et de {{ dece.utilisateur.mere }} est confirmé décédé le {{ dece.datedece }} de _________ <br><br></p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        Signé(e) par le Maire,
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/Navbar-Right-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/fontaws/css/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('/fontaws/css/all.min.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effectuer une demande</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="dark">
+        <div class="container-fluid">
+            <span class="navbar-brand" href="#"><img src="{{ asset('/assets/logo.jpg') }}" style="width: 80px;"alt="" srcset=""><span class="text-primary">Next-gen-govt</span></span>
+          <div class=" navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              
+            </ul>
+            <div class="row">
+                <div class="col">
+                    <form class="d-flex" action="{{ path('app_page_utilisateurs') }}">
+                        <input type="submit" class="btn btn-light text-primary border-primary"style="border-radius:15px;" value="Acceuil">
+                    </form>
+                </div>
+                <div class="col"> 
+                    <form class="d-flex" action="{{ path('app_recup_fichier') }}">
+                        <input type="submit" class="btn btn-light text-primary border-primary"style="border-radius:15px;" value="Obtenir un document">
+                    </form>
+                </div>
+                <div class="col">
+                    <form class="d-flex" action="{{ path('app_logout') }}">
+                        <input type="submit" class="btn btn-light text-primary border-primary"style="border-radius:15px;" value="Se deconnecter">
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="row container-fluid">
+        <div class="col card border-light"style="height: 350px;">
+            <div class="card-header"><h3 class="text-primary text-center"> Voici la liste des demandes pouvant êtres traitées pour le moment</h3></div>
+            <div class="card-body "style="overflow-y:scroll;">
+                <div class="row"><a href="{{ path('app_naissance_new') }}"><input type="button" value="Declarer une naissance" class="btn btn-primary form-control" style="border-radius:15px;"></a></div><br>
+                <div class="row"><a href="{{ path('app_naissance_acte_new') }}"><input type="button" value="Obtenir un acte de naissance" class="btn btn-primary form-control" style="border-radius:15px;"></a></div><br>
+                <div class="row"><a href="{{ path('app_certification_legalisation_new') }}"><input type="button" value="Legaliser un document" class="btn btn-primary form-control" style="border-radius:15px;"></a></div><br>
+                <div class="row"><a href="{{ path('app_deces_new') }}"><input type="button" value="Déclarer un décès" class="btn btn-primary form-control" style="border-radius:15px;"></a></div><br>
+                <div class="row"><a href="{{ path('app_deces_acte_new') }}"><input type="button" value="Récupérer un acte décès" class="btn btn-primary form-control" style="border-radius:15px;"></a></div><br>
+                <div class="row"><a href="{{ path('app_mariage_new') }}"><input type="button" value="Obtenir un acte de marriage" class="btn btn-primary form-control" style="border-radius:15px;"></a></div><br>
+            </div>
+        </div>
+        <div class="col">
+            <img src="{{ asset('/assets/soum.jpg') }}" alt="" srcset=""style="height: 520px;">
+        </div>
+      </div>
+</body>
+</html>

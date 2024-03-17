@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>acte de naissance</title>
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-grid.min.css') }}">
+</head>
+
+<body>
+    <h1>Acte de mariage</h1>
+    <p>Fait le {{ "now"|date('d-m-Y') }}</p>
+    <p></p>
+    <p></p>
+    <p class="fs-2 text-center">Acte de marriage</p>
+    <p class="fs-5 text-start">Nom: {{ mariage.demandeur.nom }}</p>
+    <p class="fs-5">Prénom: {{ mariage.demandeur.prenom }}<br></p>
+    <p class="fs-5">Lieu de naissance: {{ mariage.demandeur.lieunaissance }}<br></p>
+    <p class="fs-5">date de naissance: {{ mariage.demandeur.datenaissance|date('d-m-Y') }}<br></p>
+    <p class="fs-5">Père: {{ mariage.demandeur.pere }}<br></p>
+    <p class="fs-6">Mère: {{ mariage.demandeur.mere }}<br></p>
+    Marié(e) à :
+    <p class="fs-5 text-start">Nom: {{ mariage.demandeur.partenaire.nom }}</p>
+    <p class="fs-5">Prénom: {{ mariage.demandeur.partenaire.prenom }}<br></p>
+    <p class="fs-5">Lieu de naissance: {{ mariage.demandeur.partenaire.lieunaissance }}<br></p>
+    <p class="fs-5">date de naissance: {{ mariage.demandeur.partenaire.datenaissance|date('d-m-Y') }}<br></p>
+    <p class="fs-5">Père: {{ partenaire[0].pere }}<br></p>
+    <p class="fs-6">Mère: {{ partenaire[0].mere }}<br></p>
+
+    <p class="fs-2 text-center"></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-1"></div>
+            <div class="col-md-4 col-lg-8 col-xl-8">
+                <p class="fs-2 text-center"><br>{{ mariage.demandeur.nom }}, 
+                {{ mariage.demandeur.prenom }} né le {{ mariage.demandeur.datenaissance|date('d-m-Y') }} à 
+                {{ mariage.demandeur.lieunaissance }}, fils/fille de {{ mariage.demandeur.pere }} 
+                et de {{ mariage.demandeur.mere }} est confirmé marié à {{ mariage.demandeur.partenaire.nom }}, 
+                {{ mariage.demandeur.partenaire.prenom }} Fils/Fille de 
+                {{ partenaire[0].pere }}  et de 
+                {{ partenaire[0].mere }} &nbsp;<br></p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        Signé par le Maire
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

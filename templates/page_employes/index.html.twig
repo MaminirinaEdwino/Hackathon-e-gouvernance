@@ -1,0 +1,142 @@
+{% extends 'page_employes.html.twig' %}
+
+{% block title %}Page employés{% endblock %}
+
+{% block body %}
+{#declaration de naissance#}
+{% if declarations is defined %}
+    {% for declaration in declarations %}
+    {{ declaration.nom }} 
+    {{ declaration.prenom }}. 
+    {% if declaration.sexe == 0 %}
+        Fille
+    {% else %}
+        Fils
+    {% endif %} de
+    {{ declaration.pere }} et 
+    {{ declaration.mere }}. Né(e) le 
+    {{ declaration.datenaissance|date('d-m-Y')}} à
+    {{ declaration.lieunaissance}}
+    <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="{{ path('app_confirmer_declaration_naissance', {id:declaration.id}) }}"
+        role="button"
+        style="margin-left:20px"
+        >Confirmer</a
+    >
+    
+    <br>
+{% endfor %}
+{% endif %}
+{#demande acte de naissance#}
+{% if demande_actes is defined %}
+    
+    {% for demande in demande_actes %}
+        {{ demande.nom }}  
+    {{ demande.prenom }}.
+    {% if demande.sexe == 0 %}
+        Fille
+    {% else %}
+        Files
+    {% endif %}
+    {{ demande.pere }} et de
+    {{ demande.mere }} . Né(e) le
+    {{ demande.datenaissance|date('d-m-Y')}} à
+    {{ demande.lieunaissance}}.
+    <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="{{ path('app_confirmer_declaration_naissance', {id:demande.id}) }}"
+        role="button"
+        style="margin-left:20px"
+        >Confirmer</a
+    >
+    <br>
+    {% endfor %}
+
+    
+{% endif %}
+
+{#declaration de certification#}
+{% if certifications is defined%}
+    {% for demande in certifications %}
+    Demande de legalisation de {{ demande.demandeur.nom }}
+        <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ path('app_details_demande_certification', {id:demande.id}) }}"
+            role="button"
+            >Details</a
+        >
+        
+
+    {% endfor %}
+{% endif %}
+
+
+
+{#demande d'actes de mariage#}
+
+{% if demande_acte_mariages is defined%}
+    {% for demande in demande_acte_mariages %}
+    Demande d'acte de mariage de 
+        {{ demande.demandeur.nom }}
+        {{ demande.demandeur.prenom }}. <br>
+        N°: {{ demande.demandeur.CIN }} <br>
+        Partenaire: {{ demande.demandeur.partenaire }}
+        <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ path('app_confirmer_acte_mariage', {id:demande.id}) }}"
+            role="button"
+            style="margin-left:30px"
+            >Confirmer</a
+        >
+        
+    {% endfor %}
+{% endif %}
+{% if declarations_dece is defined %}
+    {% for declaration in declarations_dece %}
+    Déclaration de décè de 
+        {{ declaration.nom }}
+        {{ declaration.prenom }}. <br>
+        N° : {{ declaration.CIN }}
+        Décèdé le {{ declaration.dateDece|date('d-m-Y') }}
+        <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ path('app_confirmer_dece', {id:declaration.id}) }}"
+            role="button"
+            style="margin-left:30px"
+            >Confirmer</a
+        >
+        <br>
+    {% endfor %}
+{% endif %}
+
+{% if demande_actes_dece is defined %}
+    {% for declaration in demande_actes_dece %}
+    Déclaration de décè de 
+        {{ declaration.nom }}
+        {{ declaration.prenom }}. <br>
+        N° : {{ declaration.CIN }}
+        Décèdé le {{ declaration.dateDece|date('d-m-Y') }}
+        <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ path('app_confirmer_dece', {id:declaration.id}) }}"
+            role="button"
+            style="margin-left:30px"
+            >Confirmer</a
+        >
+        <br>
+    {% endfor %}
+{% endif %}
+{% endblock %}

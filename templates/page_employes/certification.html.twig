@@ -1,0 +1,14 @@
+{% extends 'page_employes.html.twig' %}
+{% block body %}
+    demande de legalisation n° {{ certification.id }}
+    <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="{{ asset('/uploads/pdf_site/') ~ certification.nonlegalise }}"
+        role="button"
+        >Telecharger le document a legaliser</a
+    >
+    
+    {{ form(form, {'method': 'POST'}) }}
+{% endblock %}

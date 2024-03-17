@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Porte{% endblock %}
+
+{% block body %}
+    <h1>Porte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ porte.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero_porte</th>
+                <td>{{ porte.numeroPorte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_porte_index') }}">back to list</a>
+
+    <a href="{{ path('app_porte_edit', {'id': porte.id}) }}">edit</a>
+
+    {{ include('porte/_delete_form.html.twig') }}
+{% endblock %}

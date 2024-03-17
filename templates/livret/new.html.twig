@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Livret{% endblock %}
+
+{% block body %}
+    <h1>Create new Livret</h1>
+
+    {{ include('livret/_form.html.twig') }}
+
+    <a href="{{ path('app_livret_index') }}">back to list</a>
+{% endblock %}

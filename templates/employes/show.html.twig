@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Utilisateurs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>CIN</th>
+                <td>{{ utilisateur.CIN }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ utilisateur.roles ? utilisateur.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ utilisateur.password }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Date_naissance</th>
+                <td>{{ utilisateur.dateNaissance ? utilisateur.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ utilisateur.age }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ utilisateur.sexe ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Status_matrimoniale</th>
+                <td>{{ utilisateur.statusMatrimoniale ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Vivant</th>
+                <td>{{ utilisateur.vivant ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ utilisateur.profession }}</td>
+            </tr>
+            <tr>
+                <th>Lieu_naissance</th>
+                <td>{{ utilisateur.lieuNaissance }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employes_index') }}">back to list</a>
+
+    <a href="{{ path('app_employes_edit', {'id': utilisateur.id}) }}">edit</a>
+
+    {{ include('employes/_delete_form.html.twig') }}
+{% endblock %}

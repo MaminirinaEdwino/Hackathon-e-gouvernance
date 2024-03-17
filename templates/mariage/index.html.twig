@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mariage index{% endblock %}
+
+{% block body %}
+    <h1>Mariage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cin</th>
+                <th>Fichier_retour</th>
+                <th>DateDemande</th>
+                <th>DateRetour</th>
+                <th>Confirmation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mariage in mariages %}
+            <tr>
+                <td>{{ mariage.id }}</td>
+                <td>{{ mariage.cin }}</td>
+                <td>{{ mariage.fichierRetour }}</td>
+                <td>{{ mariage.dateDemande ? mariage.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mariage.dateRetour ? mariage.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mariage.confirmation ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_mariage_show', {'id': mariage.id}) }}">show</a>
+                    <a href="{{ path('app_mariage_edit', {'id': mariage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mariage_new') }}">Create new</a>
+{% endblock %}

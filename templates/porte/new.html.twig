@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Porte{% endblock %}
+
+{% block body %}
+    <h1>Create new Porte</h1>
+
+    {{ include('porte/_form.html.twig') }}
+
+    <a href="{{ path('app_porte_index') }}">back to list</a>
+{% endblock %}

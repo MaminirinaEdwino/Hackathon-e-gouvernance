@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CertificationLegalisation{% endblock %}
+
+{% block body %}
+    <h1>CertificationLegalisation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ certification_legalisation.id }}</td>
+            </tr>
+            <tr>
+                <th>Non_legalise</th>
+                <td>{{ certification_legalisation.nonLegalise }}</td>
+            </tr>
+            <tr>
+                <th>Legalise</th>
+                <td>{{ certification_legalisation.legalise }}</td>
+            </tr>
+            <tr>
+                <th>DateDemande</th>
+                <td>{{ certification_legalisation.dateDemande ? certification_legalisation.dateDemande|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateRetour</th>
+                <td>{{ certification_legalisation.dateRetour ? certification_legalisation.dateRetour|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_certification_legalisation_index') }}">back to list</a>
+
+    <a href="{{ path('app_certification_legalisation_edit', {'id': certification_legalisation.id}) }}">edit</a>
+
+    {{ include('certification_legalisation/_delete_form.html.twig') }}
+{% endblock %}

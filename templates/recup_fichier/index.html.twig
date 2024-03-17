@@ -1,0 +1,123 @@
+{% extends 'recup_fichier.html.twig' %}
+
+
+{% block body %}
+{% if declaration_naissances is defined %}
+    <h4>Déclaration de naissance</h4>
+    {% for declaration_naissance in declaration_naissances %}
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr ">
+            <p>{{ declaration_naissance.nom }}</p>
+            <p>{{ declaration_naissance.prenom }}</p>
+            <p>{{ declaration_naissance.datenaissance|date('d-m-Y') }}</p>
+            {% if declaration_naissance.confirmer == true %}
+                <a
+                    name=""
+                    id=""
+                    class="btn btn-primary"
+                    href="{{ path('app_declaration_naissance_pdf', {id: declaration_naissance.id}) }}"
+                    role="button"
+                    >Telecharger Document</a
+                >
+            {% endif %}
+        </div>
+    {% endfor %}
+    <br>
+{% endif %}
+{% if acte_de_naissances is defined %}
+    <h4>Demande d'acte de naissance</h4>
+    {% for acte_de_naissance in acte_de_naissances %}
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr ">
+        <p>{{ acte_de_naissance.nom }}</p>
+        <p>{{ acte_de_naissance.prenom }}</p>
+        <p>{{ acte_de_naissance.datenaissance|date('d-m-Y') }}</p>
+        {% if acte_de_naissance.confirmer == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_declaration_naissance_pdf', {id: acte_de_naissance.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+{% if declaration_deces is defined %}
+    <h4>Déclaration de décè</h4>
+    
+    {% for declaration_dece in declaration_deces %}
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr ">
+        <p>{{ declaration_dece.nom }}</p>
+        <p>{{ declaration_dece.prenom }}</p>
+        <p>{{ declaration_dece.datedece|date('d-m-Y') }}</p>
+        {% if declaration_dece.confirmation == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_dece_pdf', {id: declaration_dece.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+{% if acte_de_deces is defined %}
+    <h4>Demande d'acte de décè</h4>
+    {% for acte_de_dece in acte_de_deces %}
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr ">
+    <p>{{ acte_de_dece.nom }}</p>
+    <p>{{ acte_de_dece.prenom }}</p>
+    <p>{{ acte_de_dece.datedece|date('d-m-Y') }}</p>
+        {% if acte_de_dece.confirmation == true %}
+            <a
+                name=""
+                id=""
+                class="btn btn-primary"
+                href="{{ path('app_dece_pdf', {id: acte_de_dece.id}) }}"
+                role="button"
+                >Telecharger Document</a
+            >
+        {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+{% if certifications is defined %}
+    <h4>Demande de certification et légalisation</h4>
+    {% for certification in certifications %}
+    <div style="display:grid; grid-template-columns: 1fr 1fr ">
+    <p>Demande de legalisation</p>
+         
+        {% if certification.confirmation == true %}
+            <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ asset('/uploads/pdf_site/') ~ certification.legalise }}"
+            role="button"
+            >Telecharger le document légalisé</a
+        >
+        {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+{% if mariages %}
+    <h4>Demande d'acte de mariage</h4>
+    {% for mariage in mariages %}
+    <div style="display:grid; grid-template-columns: 1fr 1fr ">
+    <p>Acte de mariage de {{ mariage.demandeur.nom }} {{ mariage.demandeur.prenom }}</p>
+        
+        <a
+            name=""
+            id=""
+            class="btn btn-primary"
+            href="{{ path('app_mariage_pdf', {id: mariage.id}) }}"
+            role="button"
+            >Telecharger le document</a
+        >
+    </div>    
+    {% endfor %}
+{% endif %}
+{% endblock %}

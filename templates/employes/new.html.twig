@@ -1,0 +1,10 @@
+{% extends 'ajout_employe.html.twig' %}
+
+{% block title %}New Utilisateurs{% endblock %}
+
+{% block body %}
+
+    {{ include('employes/_form.html.twig') }}
+
+    <a href="{{ path('app_employes_index') }}">back to list</a>
+{% endblock %}

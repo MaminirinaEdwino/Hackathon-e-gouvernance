@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profession{% endblock %}
+
+{% block body %}
+    <h1>Profession</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ profession.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre_profession</th>
+                <td>{{ profession.titreProfession }}</td>
+            </tr>
+            <tr>
+                <th>Porte</th>
+                <td>{{ profession.porte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_profession_index') }}">back to list</a>
+
+    <a href="{{ path('app_profession_edit', {'id': profession.id}) }}">edit</a>
+
+    {{ include('profession/_delete_form.html.twig') }}
+{% endblock %}
